@@ -1,0 +1,34 @@
+
+
+.card-container {
+    width: 200px;
+    height: 300px;
+    border: 2px solid #787A91;
+    border-radius: 5px;
+    box-shadow: 10px 10px 10px 0px rgba(0,0,0,0.16);
+    padding: 5px;
+    background-color: #EEEEEE;
+    margin: 15px;
+    transition: all ease 0.1s;
+}
+
+.card-container:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+    border: 2px solid #FFD523;
+    background-color: #B2B1B9;
+}
+
+.card-container > h4 {
+    text-align: center;
+}
+
+.card-container > p > span {
+    font-weight: bold;
+}
+
+.flag {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+}
