@@ -2,8 +2,13 @@ import React, { useEffect, useState }  from "react";
 import { Fragment } from "react";
 import CardList from "./CardList";
 
+// Components
 import SearchForm from './SearchForm';
 import Spinner from "./Spinner";
+import ShowError from './ShowError';
+
+//Styles 
+import '../styles/Home.css'
 
 const Home = () => {
 
@@ -20,12 +25,10 @@ const Home = () => {
 
     //Fetching All Countrys Data
     const handleFetchAllCountryData = async (event) => {
-        console.log('fetching...')
         try {
             setIsLoading(true);
             const response = await fetch(`https://restcountries.eu/rest/v2/all`);
             const result = await response.json()
-            console.log(result);
             if(result.status) {
                 setError(result.message);
                 setCountrysData([]);
@@ -42,12 +45,10 @@ const Home = () => {
     //Fetching Single Country Data
     const handleFetchCountryData = async (event) => {
         event.preventDefault();
-        console.log('fetching...')
         try {
             setIsLoading(true);
             const response = await fetch(`https://restcountries.eu/rest/v2/name/${countryName}?fullText=true`);
             const result = await response.json()
-            console.log(result);
             if(result.status) {
                 setError(result.message);
                 setCountrysData([]);
@@ -61,16 +62,13 @@ const Home = () => {
         setIsLoading(false);
     }
 
-
-
     useEffect( () => {
         handleFetchAllCountryData();
-
         const handleScroll = () => {
             const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
         
             if (scrollTop + clientHeight >= scrollHeight) {
-                console.log("Botton")
+                // console.log("Botton")
                 page <= limitPage && setPage(prevPage => prevPage + 1)
             }
         };
@@ -90,7 +88,10 @@ const Home = () => {
                     />
                 {   isLoading
                     ? <Spinner/>
-                    : <CardList countrys={countrysData.slice(0, page * 25)} currentPage={page}/>
+                    : (error
+                        ? <ShowError message='Country'/>
+                        : <CardList countrys={countrysData.slice(0, page * 25)} currentPage={page}/>
+                    )
                 }
         </Fragment>
     )

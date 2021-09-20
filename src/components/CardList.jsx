@@ -19,7 +19,7 @@ const CardList = ( {countrys, currentPage} ) => {
                 />
                 )
             )}
-            {currentPage <= 10 && <SecondarySpinner/>}
+            {(currentPage <= 10 && countrys.length > 1) && <SecondarySpinner/>}
         </div>
     )
 }

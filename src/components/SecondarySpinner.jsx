@@ -4,7 +4,7 @@ import '../styles/SecondarySpinner.css';
 
 const SecondarySpinner = () => (
     <div className="container">
-        <div class="lds-ellipsis">
+        <div className="lds-ellipsis">
             <div></div><div></div><div></div><div></div>
         </div>
     </div>

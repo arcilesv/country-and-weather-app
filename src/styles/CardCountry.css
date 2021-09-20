@@ -1,4 +1,8 @@
 
+a {
+    text-decoration: none;
+    color: #000;
+}
 
 .card-container {
     width: 200px;
@@ -15,8 +19,8 @@
 .card-container:hover {
     transform: scale(1.05);
     cursor: pointer;
-    border: 2px solid #FFD523;
-    background-color: #B2B1B9;
+    border: 2px solid #02182B;
+    background-color: #EBE9E9;
 }
 
 .card-container > h4 {
