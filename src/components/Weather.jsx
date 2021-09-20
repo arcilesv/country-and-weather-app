@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 // Icons
 import {WiHumidity, WiThermometer, WiWindy } from 'react-icons/wi'
@@ -17,26 +17,27 @@ const Weather = () => {
     const { capital } =  useParams();
     const API_KEY = 'a57f5af089e2679515e6b94190bd1c49';
     const toDate = new Date ();
+    const history = useHistory();
     
     //State
     const [weatherData, setWeatherData] = useState(null);
     const [error, setError] =  useState(false);
-
-    const handleFetchWeather = async () => {
-        try {
-            const response =  await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${capital}&APPID=${API_KEY}&units=metric`);
-            if(!response.ok) {
-                throw Error('Could not fetch data for that resorce');
-            }
-            const data = await response.json()
-            setWeatherData(data);
-        } catch (error) {
-            setError(true);
-            console.log(error.message);
-        }
-    }
     
     useEffect ( () => {
+        const handleFetchWeather = async () => {
+            try {
+                const response =  await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${capital}&APPID=${API_KEY}&units=metric`);
+                if(!response.ok) {
+                    throw Error('Could not fetch data for that resorce');
+                }
+                const data = await response.json()
+                setWeatherData(data);
+            } catch (error) {
+                setError(true);
+                console.log(error.message);
+            }
+        }
+
         handleFetchWeather();
         console.log(weatherData)
     }, [])
@@ -88,7 +89,7 @@ const Weather = () => {
                     </div>
                     <div className="btns-container">
                         <Link to="/"> <button className="btn">Go Home</button> </Link>
-                        <Link to="/" > <button className="btn">Go Back</button> </Link>
+                        <button className="btn" onClick={() => history.goBack()}>Go Back</button>
                    </div>
                 </div>
                 )
