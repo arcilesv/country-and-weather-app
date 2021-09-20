@@ -78,7 +78,7 @@ const Home = () => {
         return () => {
             window.removeEventListener('scroll', handleScroll);
         }
-    }, [])
+    }, [page])
 
     return (
         <Fragment>

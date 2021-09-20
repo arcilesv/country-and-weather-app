@@ -37,10 +37,8 @@ const Weather = () => {
                 console.log(error.message);
             }
         }
-
         handleFetchWeather();
-        console.log(weatherData)
-    }, [])
+    }, [capital])
 
     return (
             error

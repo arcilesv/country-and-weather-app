@@ -11,25 +11,26 @@ const DetailsCountry = () => {
     const [singleCountry, setSingleCountry] = useState(null);
     const [error, setError] = useState(false);
 
-    const FetchSingleCountryData = async () => {
-        try {
-            const response = await fetch(`https://restcountries.eu/rest/v2/name/${name}?fullText=true`);
-            const result = await response.json()
-            console.log(result);
-            if(result.status) {
-                setSingleCountry(null);
-                setError(true);
-            } else {
-                setSingleCountry(result);
-            }
-        } catch (error) {
-            console.log(error)
-        }
-    };
+    
 
     useEffect( () => {
+        const FetchSingleCountryData = async () => {
+            try {
+                const response = await fetch(`https://restcountries.eu/rest/v2/name/${name}?fullText=true`);
+                const result = await response.json()
+                console.log(result);
+                if(result.status) {
+                    setSingleCountry(null);
+                    setError(true);
+                } else {
+                    setSingleCountry(result);
+                }
+            } catch (error) {
+                console.log(error)
+            }
+        };
         FetchSingleCountryData();
-    },[])
+    },[name])
 
     return(
         error 
