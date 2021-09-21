@@ -17,7 +17,7 @@ const Home = () => {
     const [countryName, setCountryName] = useState("");
     const [error, setError] = useState(false);
     const [isLoading, setIsLoading] = useState(null);
-    let [page, setPage] = useState(1);
+    const [page, setPage] = useState(1);
 
     // Variables
     const limitPage = 10;
@@ -63,7 +63,7 @@ const Home = () => {
     }
 
     useEffect( () => {
-        handleFetchAllCountryData();
+        
         const handleScroll = () => {
             const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
         
@@ -79,6 +79,10 @@ const Home = () => {
             window.removeEventListener('scroll', handleScroll);
         }
     }, [page])
+
+    useEffect( () => {
+        handleFetchAllCountryData();
+    }, [])
 
     return (
         <Fragment>
