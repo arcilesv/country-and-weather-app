@@ -51,7 +51,7 @@ const Weather = () => {
                         <p>{`${toDate.toDateString()}, ${toDate.toLocaleTimeString()}`}</p>
                         <div className="main-temperature">
                             <img 
-                                src={`http://openweathermap.org/img/wn/${weatherData.weather[0].icon}.png`} 
+                                src={`https://openweathermap.org/img/wn/${weatherData.weather[0].icon}.png`} 
                                 alt={weatherData.main.description} 
                                 />
                             <p className="weather-descrip">{weatherData.weather[0].description}</p>
