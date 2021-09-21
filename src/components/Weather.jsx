@@ -26,7 +26,7 @@ const Weather = () => {
     useEffect ( () => {
         const handleFetchWeather = async () => {
             try {
-                const response =  await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${capital}&APPID=${API_KEY}&units=metric`);
+                const response =  await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${capital}&APPID=${API_KEY}&units=metric`);
                 if(!response.ok) {
                     throw Error('Could not fetch data for that resorce');
                 }
